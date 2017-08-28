@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ParkingLot.Domain.Slots.Exceptions
+namespace ParkingLot.Domain.Cars.Exceptions
 {
     public class ParkingLotFullException : Exception
     {

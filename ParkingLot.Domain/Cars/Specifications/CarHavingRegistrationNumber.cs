@@ -9,6 +9,9 @@
             _registrationNumber = registrationNumber;
         }
 
-        public bool IsSatisfiedBy(Car car) => car.RegistrationNumber == _registrationNumber;
+        public bool IsSatisfiedBy(Car car)
+        {
+            return car.RegistrationNumber == _registrationNumber;
+        }
     }
 }

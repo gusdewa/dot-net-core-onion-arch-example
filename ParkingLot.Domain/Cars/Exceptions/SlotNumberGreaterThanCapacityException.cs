@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ParkingLot.Domain.Slots.Exceptions
+namespace ParkingLot.Domain.Cars.Exceptions
 {
     public class SlotNumberGreaterThanCapacityException : Exception
     {

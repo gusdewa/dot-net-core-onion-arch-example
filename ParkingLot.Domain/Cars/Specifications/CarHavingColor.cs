@@ -9,6 +9,9 @@
             _color = color;
         }
 
-        public bool IsSatisfiedBy(Car car) => car.Color == _color;
+        public bool IsSatisfiedBy(Car car)
+        {
+            return car.Color == _color;
+        }
     }
 }
