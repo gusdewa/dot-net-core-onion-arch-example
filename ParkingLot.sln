@@ -5,6 +5,18 @@ VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot", "ParkingLot\ParkingLot.csproj", "{FDD09305-6B53-4CC7-9A8D-80D8D2FA06D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.ApplicationService", "ParkingLot.ApplicationService\ParkingLot.ApplicationService.csproj", "{ABCBDA17-4C07-4482-9CE0-92CED4BC87C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.Infrastructure", "ParkingLot.Infrastructure\ParkingLot.Infrastructure.csproj", "{50574A90-2A55-4256-B187-F391CA67F2CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.Domain", "ParkingLot.Domain\ParkingLot.Domain.csproj", "{6888EEB5-4B12-417B-8CA1-435480E5FDE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.Domain.Tests", "ParkingLot.Domain.Tests\ParkingLot.Domain.Tests.csproj", "{831637FF-6EC8-4DD7-A808-6D0FB686565D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.ApplicationService.Tests", "ParkingLot.ApplicationService.Tests\ParkingLot.ApplicationService.Tests.csproj", "{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.Infrastructure.Tests", "ParkingLot.Infrastructure.Tests\ParkingLot.Infrastructure.Tests.csproj", "{D588F52F-AD66-4668-96B7-F9BC7906D79E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{FDD09305-6B53-4CC7-9A8D-80D8D2FA06D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD09305-6B53-4CC7-9A8D-80D8D2FA06D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDD09305-6B53-4CC7-9A8D-80D8D2FA06D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCBDA17-4C07-4482-9CE0-92CED4BC87C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCBDA17-4C07-4482-9CE0-92CED4BC87C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCBDA17-4C07-4482-9CE0-92CED4BC87C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCBDA17-4C07-4482-9CE0-92CED4BC87C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50574A90-2A55-4256-B187-F391CA67F2CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50574A90-2A55-4256-B187-F391CA67F2CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50574A90-2A55-4256-B187-F391CA67F2CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50574A90-2A55-4256-B187-F391CA67F2CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6888EEB5-4B12-417B-8CA1-435480E5FDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6888EEB5-4B12-417B-8CA1-435480E5FDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6888EEB5-4B12-417B-8CA1-435480E5FDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6888EEB5-4B12-417B-8CA1-435480E5FDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831637FF-6EC8-4DD7-A808-6D0FB686565D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831637FF-6EC8-4DD7-A808-6D0FB686565D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831637FF-6EC8-4DD7-A808-6D0FB686565D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831637FF-6EC8-4DD7-A808-6D0FB686565D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D588F52F-AD66-4668-96B7-F9BC7906D79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D588F52F-AD66-4668-96B7-F9BC7906D79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D588F52F-AD66-4668-96B7-F9BC7906D79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D588F52F-AD66-4668-96B7-F9BC7906D79E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
