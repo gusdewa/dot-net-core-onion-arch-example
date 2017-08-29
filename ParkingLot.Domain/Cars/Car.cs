@@ -84,6 +84,6 @@ namespace ParkingLot.Domain.Cars
             }
         }
 
-        public StringBuilder GenerateStatusReport() => new StringBuilder($"{_registrationNumber}\t{_color}");
+        public StringBuilder GenerateStatusReport() => new StringBuilder($"{_slotNumber.Value}\t{_registrationNumber}\t{_color}");
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using ParkingLot.Domain.Cars.Specifications;
+using ParkingLot.Domain.Reports;
 
 namespace ParkingLot.Domain.Cars
 {
-    public interface ICarSlotManager
+    public interface ICarSlotManager : IStatusReportPrintable
     {
+        void CreateParkingLot(int maxCapacity);
         int GenerateNewFreeSlotNumber();
         IEnumerable<Car> GetCars();
         IEnumerable<string> GetCarsColor(ICarSpecification carQuerySpecification);

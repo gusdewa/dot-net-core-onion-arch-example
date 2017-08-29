@@ -36,7 +36,8 @@ namespace ParkingLot.Domain.Tests.Cars
             const string validRegistrationNumber = "L-1234-XX";
             const string validColor = "White";
             Car car = new Car(validRegistrationNumber, validColor);
-            StringBuilder expectedReport = new StringBuilder($"{validRegistrationNumber}\t{validColor}");
+            car.Park(1);
+            StringBuilder expectedReport = new StringBuilder($"1\t{validRegistrationNumber}\t{validColor}");
 
             // Act
             StringBuilder actualReport = car.GenerateStatusReport();
