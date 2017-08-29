@@ -18,7 +18,7 @@ namespace ParkingLot.ApplicationService
 
         public ICommandHandler Create(string name)
         {
-            switch (name.ToLower())
+            switch (name.Trim().ToLower())
             {
                 case "park": return new ParkCarCommandHandler(_slotManager, _screenWriter);
                 case "leave": return new LeaveCarCommandHandler(_slotManager, _screenWriter);

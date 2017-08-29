@@ -7,7 +7,7 @@ namespace ParkingLot.ApplicationService
     {
         public ICommand Create(string name, string[] args)
         {
-            switch (name.ToLower())
+            switch (name.Trim().ToLower())
             {
                 case "park": return new ParkCarCommand(args[0], args[1]);
                 case "leave": return new LeaveCarCommand(Convert.ToInt32(args[0]));

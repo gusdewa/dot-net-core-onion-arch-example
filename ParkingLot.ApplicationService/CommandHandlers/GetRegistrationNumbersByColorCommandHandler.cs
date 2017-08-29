@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ParkingLot.ApplicationService.Commands;
+using ParkingLot.ApplicationService.Exceptions;
 using ParkingLot.Domain.Cars;
 using ParkingLot.Domain.Utils;
 
@@ -21,9 +23,15 @@ namespace ParkingLot.ApplicationService.CommandHandlers
         {
             GetRegistrationNumbersByColorCommand concreteCommand = command as GetRegistrationNumbersByColorCommand ??
                                                                    throw new InvalidOperationException();
-            var registrationNumbers = _slotManager.GetCarsRegistrationNumber(concreteCommand.QuerySpecification);
+            
+            IEnumerable<string> registrationNumbers = _slotManager.GetCarsRegistrationNumber(concreteCommand.QuerySpecification);
+            if (!registrationNumbers.Any())
+            {
+                throw new CarNotFoundException();
+            }
+
             string commaSeparatedResult =
-                registrationNumbers.Aggregate("", (acc, cur) => string.IsNullOrEmpty(acc) ? cur : $", {cur}");
+                registrationNumbers.Aggregate("", (acc, cur) => string.IsNullOrEmpty(acc) ? cur :$"{acc}, {cur}");
             _screenWriter.WriteLine(commaSeparatedResult);
         }
     }

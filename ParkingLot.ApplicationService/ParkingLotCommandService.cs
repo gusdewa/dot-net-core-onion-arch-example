@@ -18,13 +18,15 @@ namespace ParkingLot.ApplicationService
         // A queue of deferred actions is needed to enable batch operation from file
         private readonly Queue<Action> _commandQueue;
 
+        private readonly IScreenWriter _screenWriter;
+
         public ParkingLotCommandService(IScreenWriter screenWriter)
         {
-            IScreenWriter writer = screenWriter ?? throw new ArgumentNullException();
+            _screenWriter = screenWriter ?? throw new ArgumentNullException();
             ICarSlotManager carSlotManager = new CarSlotManager(new Dictionary<int, Car>());
             _commandQueue = new Queue<Action>();
             _commandFactory = new CommandFactory();
-            _commandHandlerFactory = new CommandHandlerFactory(carSlotManager, writer);
+            _commandHandlerFactory = new CommandHandlerFactory(carSlotManager, _screenWriter);
         }
 
         public void Register(string commandName, string[] args = null)
@@ -45,6 +47,7 @@ namespace ParkingLot.ApplicationService
         public IEnumerable<KeyValuePair<string, string[]>> ExtractCommandStatements(string longString)
         {
             return longString
+                .Replace("\r", string.Empty) // Trim \r
                 .Split('\n') // Get command statement per line
                 .Where(line => !string.IsNullOrEmpty(line)) // Filter from empty line
                 .Select(line =>
@@ -64,7 +67,15 @@ namespace ParkingLot.ApplicationService
         public void Execute()
         {
             Action command = _commandQueue.Dequeue();
-            command.Invoke();
+            try
+            {
+                command.Invoke();
+            }
+            catch (Exception e)
+            {
+                _screenWriter.WriteLine(e.Message);
+            }
+            
         }
 
         public void ExecuteAll()
@@ -72,7 +83,14 @@ namespace ParkingLot.ApplicationService
             while (_commandQueue.Any())
             {
                 Action command = _commandQueue.Dequeue();
-                command.Invoke();
+                try
+                {
+                    command.Invoke();
+                }
+                catch (Exception e)
+                {
+                    _screenWriter.WriteLine(e.Message);
+                }
             }
         }
     }
