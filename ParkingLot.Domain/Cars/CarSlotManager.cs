@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using ParkingLot.Domain.Cars.Exceptions;
 using ParkingLot.Domain.Cars.Specifications;
-using ParkingLot.Domain.Reports;
 
 namespace ParkingLot.Domain.Cars
 {
-    public class CarSlotManager : IStatusReportPrintable, ICarSlotManager
+    public class CarSlotManager : ICarSlotManager
     {
         /// <summary>
         ///     Repository for cars with a unique slot number representing a parking lot.
@@ -16,12 +15,17 @@ namespace ParkingLot.Domain.Cars
         /// </summary>
         private readonly IDictionary<int, Car> _carSlots;
 
-        private readonly int _maxSlotCapacity;
+        private int _maxSlotCapacity;
 
-        public CarSlotManager(IDictionary<int, Car> carSlots, int maxSlotCapacity)
+        public CarSlotManager(IDictionary<int, Car> carSlots, int maxSlotCapacity = 0)
         {
             _carSlots = carSlots ?? throw new ArgumentNullException();
-            // Enforce to use existing mechanism to put cars into car slot
+            _maxSlotCapacity = maxSlotCapacity;
+        }
+
+        public void CreateParkingLot(int maxSlotCapacity)
+        {
+            _carSlots.Clear();
             _maxSlotCapacity = maxSlotCapacity;
         }
 
@@ -121,7 +125,7 @@ namespace ParkingLot.Domain.Cars
 
         private IEnumerable<Car> GetCars(ICarSpecification carQuerySpecification)
         {
-            return GetCars().Where(e => carQuerySpecification.IsSatisfiedBy(e));
+            return GetCars().Where(carQuerySpecification.IsSatisfiedBy);
         }
 
         public IEnumerable<string> GetCarsColor(ICarSpecification carQuerySpecification)
