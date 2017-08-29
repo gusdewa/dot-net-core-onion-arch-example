@@ -9,14 +9,14 @@ namespace ParkingLot.ApplicationService
 {
     public class ParkingLotCommandService : IParkingLotCommandService
     {
-        // A queue of deferred actions is needed to enable batch operation from file
-        private readonly Queue<Action> _commandQueue;
-
         // Factory to generate concrete command from given name
         private readonly CommandFactory _commandFactory;
 
         // Factory to generate concrete command handler from given name
         private readonly CommandHandlerFactory _commandHandlerFactory;
+
+        // A queue of deferred actions is needed to enable batch operation from file
+        private readonly Queue<Action> _commandQueue;
 
         public ParkingLotCommandService(IScreenWriter screenWriter)
         {
@@ -32,18 +32,28 @@ namespace ParkingLot.ApplicationService
             ICommand command = _commandFactory.Create(commandName, args);
             ICommandHandler handler = _commandHandlerFactory.Create(commandName);
             if (command == null || handler == null)
-            {
                 throw new CommandNotRecognizedException();
-            }
             _commandQueue.Enqueue(() => handler.Execute(command));
         }
 
-        public void RegisterAll(ICollection<KeyValuePair<string, string[]>> namesAndArgs)
+        public void RegisterAll(IEnumerable<KeyValuePair<string, string[]>> namesAndArgs)
         {
             foreach (KeyValuePair<string, string[]> namesAndArg in namesAndArgs)
-            {
                 Register(namesAndArg.Key, namesAndArg.Value);
-            }
+        }
+
+        public IEnumerable<KeyValuePair<string, string[]>> ExtractCommandStatements(string longString)
+        {
+            return longString
+                .Split('\n') // Get command statement per line
+                .Where(line => !string.IsNullOrEmpty(line)) // Filter from empty line
+                .Select(line =>
+                {
+                    Queue<string> splitWords = new Queue<string>(line.Split(' '));
+                    string name = splitWords.Dequeue();
+                    string[] args = splitWords.ToArray();
+                    return new KeyValuePair<string, string[]>(name, args);
+                });
         }
 
         public IEnumerable<Action> GetRegisteredCommands()
@@ -62,7 +72,7 @@ namespace ParkingLot.ApplicationService
             while (_commandQueue.Any())
             {
                 Action command = _commandQueue.Dequeue();
-                command.Invoke();                
+                command.Invoke();
             }
         }
     }

@@ -9,6 +9,7 @@ namespace ParkingLot.ApplicationService
         void ExecuteAll();
         IEnumerable<Action> GetRegisteredCommands();
         void Register(string commandName, string[] args = null);
-        void RegisterAll(ICollection<KeyValuePair<string, string[]>> namesAndArgs);
+        void RegisterAll(IEnumerable<KeyValuePair<string, string[]>> namesAndArgs);
+        IEnumerable<KeyValuePair<string, string[]>> ExtractCommandStatements(string longString);
     }
 }
