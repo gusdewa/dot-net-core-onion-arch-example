@@ -7,7 +7,7 @@ namespace ParkingLot.Domain.Cars
     /// <summary>
     ///     Car entity identifiable having unique Registration Number and Color
     /// </summary>
-    public class Car : IEquatable<Car>, IStatusReport
+    public class Car : IEquatable<Car>, IStatusReportPrintable
     {
         private readonly string _registrationNumber;
         private readonly string _color;
@@ -54,6 +54,11 @@ namespace ParkingLot.Domain.Cars
             get { return _slotNumber; }
         }
 
+        /// <summary>
+        /// Equality depends only on Registration Number and Color, not Slot Number
+        /// </summary>
+        /// <param name="other">Other car to compare with</param>
+        /// <returns></returns>
         public bool Equals(Car other)
         {
             if (ReferenceEquals(null, other)) return false;

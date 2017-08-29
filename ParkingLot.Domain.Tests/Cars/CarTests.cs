@@ -44,5 +44,28 @@ namespace ParkingLot.Domain.Tests.Cars
             // Assert
             Assert.True(expectedReport.Equals(actualReport));
         }
+
+        [Fact]
+        public void EqualityMustBasedOnRegistrationNumberAndColor()
+        {
+            // Arrange
+            const string color = "White";
+            const string registrationNumber = "AAAAAAA";
+            Car car = new Car(registrationNumber, color);
+            Car identicalCar = new Car(registrationNumber, color);
+            Car differentCarForRegistrationNumber = new Car("BBBBBBB", color);
+            Car differentCarForColor = new Car(registrationNumber, "Black");
+            Car differentCar = new Car("BBBBBBB", "Black");
+            Car parkedIdenticalCar = new Car(registrationNumber, color);
+            parkedIdenticalCar.Park(1);
+
+            // Act
+            // Assert
+            Assert.True(car.Equals(identicalCar));
+            Assert.True(car.Equals(parkedIdenticalCar));
+            Assert.False(car.Equals(differentCar));
+            Assert.False(car.Equals(differentCarForColor));
+            Assert.False(car.Equals(differentCarForRegistrationNumber));
+        }
     }
 }

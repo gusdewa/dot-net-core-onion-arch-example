@@ -8,7 +8,7 @@ using ParkingLot.Domain.Reports;
 
 namespace ParkingLot.Domain.Cars
 {
-    public class CarSlotManager : IStatusReport, ICarSlotManager
+    public class CarSlotManager : IStatusReportPrintable, ICarSlotManager
     {
         /// <summary>
         ///     Repository for cars with a unique slot number representing a parking lot.
@@ -83,7 +83,7 @@ namespace ParkingLot.Domain.Cars
         /// </summary>
         /// <param name="car"></param>
         /// <returns></returns>
-        public int PutCarInto(Car car)
+        public int PutCarIn(Car car)
         {
             if (car == null)
                 throw new ArgumentNullException();
@@ -114,22 +114,24 @@ namespace ParkingLot.Domain.Cars
             _carSlots.Remove(slotNumber);
         }
 
+        public IEnumerable<Car> GetCars()
+        {
+            return _carSlots.Values;
+        }
 
         private IEnumerable<Car> GetCars(ICarSpecification carQuerySpecification)
         {
-            return _carSlots
-                .Where(e => carQuerySpecification.IsSatisfiedBy(e.Value))
-                .Select(e => e.Value);
+            return GetCars().Where(e => carQuerySpecification.IsSatisfiedBy(e));
         }
 
         public IEnumerable<string> GetCarsColor(ICarSpecification carQuerySpecification)
         {
-            return GetCars(carQuerySpecification).Select(e => e.Color);
+            return GetCars(carQuerySpecification).Select(e => e.Color).Distinct();
         }
 
         public IEnumerable<string> GetCarsRegistrationNumber(ICarSpecification carQuerySpecification)
         {
-            return GetCars(carQuerySpecification).Select(e => e.RegistrationNumber);
+            return GetCars(carQuerySpecification).Select(e => e.RegistrationNumber).Distinct();
         }
 
         public IEnumerable<int> GetCarsSlotNumber(ICarSpecification carQuerySpecification)

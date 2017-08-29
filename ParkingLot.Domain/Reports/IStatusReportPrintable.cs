@@ -2,7 +2,7 @@
 
 namespace ParkingLot.Domain.Reports
 {
-    public interface IStatusReport
+    public interface IStatusReportPrintable
     {
         StringBuilder GenerateStatusReport();
     }
