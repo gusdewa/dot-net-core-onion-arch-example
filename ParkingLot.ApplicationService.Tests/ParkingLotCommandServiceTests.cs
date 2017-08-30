@@ -48,7 +48,7 @@ namespace ParkingLot.ApplicationService.Tests
             service.RegisterAll(commandArgs);
 
             // Assert
-            Assert.Equal(2, service.GetRegisteredCommands().Count());
+            Assert.Equal(3, service.GetRegisteredCommands().Count());
         }
 
         [Fact]
