@@ -7,6 +7,12 @@ Please visit this page:
 
 Please choose your **MacOS** or **Linux** distribution, then follow the instructions.
 
+## Build the Source Code
+
+1. Go to `~/ParkingLot/` folder
+2. Run CLI `dotnet restore`
+3. Run CLI `dotnet build`
+
 ## Run the program
 
 1. Go to `~/ParkingLot/ParkingLot.ConsoleApp`
@@ -18,7 +24,7 @@ Please choose your **MacOS** or **Linux** distribution, then follow the instruct
 1. Go to any folder having name pattern `*.Tests`, e.g., `~/ParkingLot/ParkingLot.ApplicationService.Tests`
 2. Run CLI `dotnet test`
 
-## Code Base Patterns and Structure
+## Source Code Patterns and Structure
 The structure follow **Domain Driven Design** principle. It placed the **Domain** as a core dependency. The **Domain** is wrapped inside the **Application Service**. All interaction to the infrastructure, e.g., Console or File, is maintained in the **Infrasturcture** project. Through *interface segragetation* (the interfaces are placed in the **Domain**), the **Application Service** can be aware of it, but not having a direct dependency to it. It can be then injected by a Dependency Resolver library.
 
 - `ParkingLot.ApplicationService\`:
