@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingLot.Domain.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingLot.ApplicationService.Tests", "ParkingLot.ApplicationService.Tests\ParkingLot.ApplicationService.Tests.csproj", "{B1E69CE8-3CD6-4914-A6F2-3953A54DCF5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot.ConsoleApp", "ParkingLot.ConsoleApp\ParkingLot.ConsoleApp.csproj", "{0F80CA56-F8E1-43A0-B31B-5E1564A93226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingLot.ConsoleApp", "ParkingLot.ConsoleApp\ParkingLot.ConsoleApp.csproj", "{0F80CA56-F8E1-43A0-B31B-5E1564A93226}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A63F7F8-C50F-49B9-81F4-BC9D6A148EF9}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
