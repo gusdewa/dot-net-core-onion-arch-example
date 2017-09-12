@@ -16,7 +16,7 @@ namespace ParkingLot.Infrastructure.File
 
         public StringBuilder ReadAsString(string fileName)
         {
-            FileStream fileStream = null;;
+            FileStream fileStream = null;
             try
             {
                 fileStream = new FileStream(fileName, FileMode.Open);
